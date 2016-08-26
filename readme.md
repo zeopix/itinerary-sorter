@@ -1,27 +1,18 @@
 # ItinerarySorter
-Sort a trip itinerary given a set of boarding passes which constitute a full trip.
+Sort a trip itinerary given a set of boarding passes which form a full trip.
 
-#### Dependencies
-- php ^5.6 || ^7.0
-- composer
-
-Install phpunit 
-```bash
-composer install
+#### Installation
+######Using composer
+Include the package
 ```
-Run tests 
-```bash
-vendor/bin/phpunit
+composer require zeopix/itinerary-sorter
 ```
 
 #### Usage
-- php ^5.6 || ^7.0
-- composer
-
-Install phpunit 
+Sample index.php 
 ```php
 <?php
-include 'ItinerarySorter/vendor/autoloader.php';
+include './vendor/autoloader.php';
 
 use ItinerarySorter\Application\ItinerarySorter;
 use ItinerarySorter\Model\BoardingCard;
@@ -37,8 +28,14 @@ $unsortedItinerary = new BoardingCardCollection();
 
 $sortedItinerary = $itinerarySorter->sort($unsortedItinerary);
 
+
 ```
 Run tests 
 ```
 vendor/bin/phpunit
 ```
+
+###Implementation Notes
+- The (greedy) sorting algorithm assumes that there is one and only one path for the itinerary.
+- Replacing array_unshift by a implementation of SplFixedArray would improve the performance, as
+simple arrays must reindex all elements for insert operations in php.

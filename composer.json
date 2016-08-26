@@ -1,4 +1,15 @@
 {
+  "name": "zeopix/itinerary-sorter",
+  "description": "A PHP Library with a greedy sorter for one-path itineraries",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Iván Guillén",
+      "email": "zeopix@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
   "autoload": {
     "psr-4": {"ItinerarySorter\\": "src/"}
   },
