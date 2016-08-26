@@ -38,9 +38,7 @@ vendor/bin/phpunit
 ```
 
 #### Model
-Accommodation
-- type: string - 
-- name: string (optional) - 
+See phpdoc for Model classes.
 
 ###Implementation Notes
 - The (greedy) sorting algorithm assumes that there is one and only one path for the itinerary.
