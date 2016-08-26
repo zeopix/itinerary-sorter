@@ -1,6 +1,8 @@
 <?php
 namespace ItinerarySorter\Model;
 
+use ItinerarySorter\Exception\EmptyItineraryException;
+
 class BoardingCardCollection
 {
     /**
@@ -26,10 +28,16 @@ class BoardingCardCollection
 
     /**
      * @return BoardingCard
+     * @throws EmptyItineraryException
      */
     public function getInitialBoardingCard()
     {
-        return reset($this->boardingCards);
+        $initialBoardingCard = reset($this->boardingCards);
+        if (!$initialBoardingCard) {
+            throw new EmptyItineraryException();
+        }
+
+        return $initialBoardingCard;
     }
 
     /**

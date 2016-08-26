@@ -1,7 +1,8 @@
 <?php
 namespace ItinerarySorter\Application;
 
-use ItinerarySorter\Exception\ItineraryNotFound;
+use ItinerarySorter\Exception\EmptyItineraryException;
+use ItinerarySorter\Exception\ItineraryNotFoundException;
 use ItinerarySorter\Model\Accommodation;
 use ItinerarySorter\Model\BoardingCard;
 use ItinerarySorter\Model\BoardingCardCollection;
@@ -69,7 +70,12 @@ class ItinerarySorterTest extends TestCase
                     ]
                 ),
                 'expectedSortedBoardingCards' => null,
-                'expectedException' => ItineraryNotFound::class,
+                'expectedException' => ItineraryNotFoundException::class,
+            ],
+            'throw exception for empty itinerary' => [
+                'unsortedBoardingCards' => new BoardingCardCollection([]),
+                'expectedSortedBoardingCards' => null,
+                'expectedException' => EmptyItineraryException::class,
             ],
         ];
     }

@@ -1,8 +1,10 @@
 <?php
 namespace ItinerarySorter\Application;
 
-use ItinerarySorter\Exception\ItineraryNotFound;
+use ItinerarySorter\Exception\EmptyItineraryException;
+use ItinerarySorter\Exception\ItineraryNotFoundException;
 use ItinerarySorter\Model\BoardingCardCollection;
+use ItinerarySorter\Model\BoardingCard;
 
 class ItinerarySorter
 {
@@ -39,10 +41,11 @@ class ItinerarySorter
     /**
      * Given a unsorted collection of boarding cards
      * Returns a sorted collection of boarding cards
-     * 
+     *
      * @param BoardingCardCollection $boardingCards
      * @return BoardingCardCollection
-     * @throws ItineraryNotFound
+     * @throws ItineraryNotFoundException
+     * @throws EmptyItineraryException
      */
     public function sort(BoardingCardCollection $boardingCards)
     {
@@ -61,7 +64,7 @@ class ItinerarySorter
         }
 
         if (!empty($this->pointersHashmap)) {
-            throw new ItineraryNotFound();
+            throw new ItineraryNotFoundException();
         }
 
         $this->clearHashmaps();
@@ -98,7 +101,7 @@ class ItinerarySorter
             $this->backwardPointer = null;
         }
 
-        if (isset($this->destinationHashmap[$origin]) && !empty($this->destinationHashmap[$origin])) {
+        if ($this->isThereNextLeg($this->destinationHashmap, $origin)) {
             $backwardLeg = array_shift($this->destinationHashmap[$origin]);
             $pointer = $this->pointersHashmap[$backwardLeg];
 
@@ -116,7 +119,7 @@ class ItinerarySorter
         unset($this->pointersHashmap[$this->forwardPointer->getUuid()]);
         $this->forwardPointer = null;
 
-        if (isset($this->originHashmap[$target]) && !empty($this->originHashmap[$target])) {
+        if ($this->isThereNextLeg($this->originHashmap, $target)) {
             $forwardLeg = array_shift($this->originHashmap[$target]);
             $pointer = $this->pointersHashmap[$forwardLeg];
 
@@ -129,7 +132,8 @@ class ItinerarySorter
 
     /**
      * @param BoardingCardCollection $boardingCards
-     * @return BoardingCard
+     * @return \ItinerarySorter\Model\BoardingCard
+     * @throws EmptyItineraryException
      */
     public function initializePointers(BoardingCardCollection $boardingCards)
     {
@@ -139,5 +143,15 @@ class ItinerarySorter
         $this->backwardPointer = $initialPointer;
 
         return $initialPointer;
+    }
+
+    /**
+     * @param array $hashmap
+     * @param string $location
+     * @return bool
+     */
+    private function isThereNextLeg($hashmap, $location)
+    {
+        return isset($hashmap[$location]) && !empty($hashmap[$location]);
     }
 }
