@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/zeopix/itinerary-sorter.svg?branch=master)](https://travis-ci.org/zeopix/itinerary-sorter)
+
 # ItinerarySorter
 Sort a trip itinerary given a set of boarding passes which form a full trip.
 
