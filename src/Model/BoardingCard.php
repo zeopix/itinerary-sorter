@@ -19,15 +19,22 @@ class BoardingCard
     private $destination;
 
     /**
+     * @var Accommodation
+     */
+    private $accommodation;
+
+    /**
      * @param string $uuid
      * @param string $origin
      * @param string $destination
+     * @param Accommodation $accommodation
      */
-    public function __construct($uuid, $origin, $destination)
+    public function __construct($uuid, $origin, $destination, Accommodation $accommodation)
     {
         $this->uuid = $uuid;
         $this->origin = $origin;
         $this->destination = $destination;
+        $this->accommodation = $accommodation;
     }
 
     /**

@@ -102,7 +102,6 @@ class ItinerarySorter
             if ($pointer) {
                 $this->sortedBoardingCards->unshift($pointer);
                 $this->backwardPointer = $pointer;
-
             }
         }
     }

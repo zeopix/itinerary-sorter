@@ -2,6 +2,7 @@
 namespace ItinerarySorter\Application;
 
 use ItinerarySorter\Exception\ItineraryNotFound;
+use ItinerarySorter\Model\Accommodation;
 use ItinerarySorter\Model\BoardingCard;
 use ItinerarySorter\Model\BoardingCardCollection;
 use PHPUnit\Framework\TestCase;
@@ -62,9 +63,9 @@ class ItinerarySorterTest extends TestCase
             'throw exception for incomplete path' => [
                 'unsortedBoardingCards' => new BoardingCardCollection(
                     [
-                        new BoardingCard('AB', 'A', 'B'),
-                        new BoardingCard('CD', 'C', 'D'),
-                        new BoardingCard('DE', 'D', 'E'),
+                        new BoardingCard('AB', 'A', 'B', new Accommodation('vector')),
+                        new BoardingCard('CD', 'C', 'D', new Accommodation('vector')),
+                        new BoardingCard('DE', 'D', 'E', new Accommodation('vector')),
                     ]
                 ),
                 'expectedSortedBoardingCards' => null,
@@ -78,25 +79,29 @@ class ItinerarySorterTest extends TestCase
         $this->sampleBoardingCards[] = new BoardingCard(
             0,
             'Madrid',
-            'Barcelona'
+            'Barcelona',
+            new Accommodation('Train', '78A', null, '45B')
         );
 
         $this->sampleBoardingCards[] = new BoardingCard(
             1,
             'Barcelona',
-            'Gerona Airport'
+            'Gerona Airport',
+            new Accommodation('Airport Bus', null, null, '45B')
         );
 
         $this->sampleBoardingCards[] = new BoardingCard(
             2,
             'Gerona Airport',
-            'Stockholm'
+            'Stockholm',
+            new Accommodation('Plane', 'SK455', '45B', '3A', 'drop', 'counter 344')
         );
 
         $this->sampleBoardingCards[] = new BoardingCard(
             3,
             'Stockholm',
-            'New York JFK'
+            'New York JFK',
+            new Accommodation('Plane', 'SK22', '22', '7B', 'auto')
         );
     }
 }
