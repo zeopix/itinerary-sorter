@@ -25,6 +25,14 @@ class BoardingCardCollection
     }
 
     /**
+     * @return BoardingCard
+     */
+    public function getInitialBoardingCard()
+    {
+        return reset($this->boardingCards);
+    }
+
+    /**
      * @param BoardingCard $boardingCard
      */
     public function push(BoardingCard $boardingCard)

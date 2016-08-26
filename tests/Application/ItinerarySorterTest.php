@@ -30,7 +30,7 @@ class ItinerarySorterTest extends TestCase
             $this->expectException($expectedException);
         }
 
-        $sortedBoardingCards = $itinerarySorter->sortBoardingCards($unsortedBoardingCards);
+        $sortedBoardingCards = $itinerarySorter->sort($unsortedBoardingCards);
 
         $this->assertEquals($expectedSortedBoardingCards, $sortedBoardingCards);
     }
