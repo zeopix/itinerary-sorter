@@ -37,6 +37,9 @@ class ItinerarySorter
     private $sortedBoardingCards;
 
     /**
+     * Given a unsorted collection of boarding cards
+     * Returns a sorted collection of boarding cards
+     * 
      * @param BoardingCardCollection $boardingCards
      * @return BoardingCardCollection
      * @throws ItineraryNotFound

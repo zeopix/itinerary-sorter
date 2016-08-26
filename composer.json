@@ -1,6 +1,6 @@
 {
   "name": "zeopix/itinerary-sorter",
-  "description": "A PHP Library with a greedy sorter for one-path itineraries",
+  "description": "A PHP Library that sorts a itinerary given a unordered set of boarding cards — Edit",
   "type": "library",
   "license": "MIT",
   "authors": [

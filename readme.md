@@ -19,21 +19,25 @@ use ItinerarySorter\Model\BoardingCard;
 use ItinerarySorter\Model\BoardingCardCollection;
 
 $boardingCards = [
-    new BoardingCard(3, 'Barcelona', 'Lisboa'),
-    new BoardingCard(1, 'Stockholm', 'Lisboa'),
-    new BoardingCard(2, 'Madrid', 'Barcelona'),
+    new BoardingCard(3, 'Barcelona', 'Lisboa', new Accomodation('plane')),
+    new BoardingCard(1, 'Stockholm', 'Lisboa', new Accomodation('plane')),
+    new BoardingCard(2, 'Madrid', 'Barcelona', new Accomodation('plane')),
 ];
 
 $unsortedItinerary = new BoardingCardCollection();
 
 $sortedItinerary = $itinerarySorter->sort($unsortedItinerary);
 
-
 ```
 Run tests 
 ```
 vendor/bin/phpunit
 ```
+
+#### Model
+Accommodation
+- type: string - 
+- name: string (optional) - 
 
 ###Implementation Notes
 - The (greedy) sorting algorithm assumes that there is one and only one path for the itinerary.
