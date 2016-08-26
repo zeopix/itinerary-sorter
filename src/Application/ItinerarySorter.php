@@ -11,6 +11,6 @@ class ItinerarySorter
      */
     public function sortBoardingCards(BoardingCardCollection $boardingCards)
     {
-        return new BoardingCardCollection();
+        return new BoardingCardCollection([]);
     }
 }
