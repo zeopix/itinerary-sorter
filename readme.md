@@ -19,6 +19,7 @@ include './vendor/autoloader.php';
 
 use ItinerarySorter\Application\ItinerarySorter;
 use ItinerarySorter\Model\BoardingCard;
+use ItinerarySorter\Model\Accommodation;
 use ItinerarySorter\Model\BoardingCardCollection;
 
 $boardingCards = [
@@ -29,6 +30,7 @@ $boardingCards = [
 
 $unsortedItinerary = new BoardingCardCollection();
 
+$itinerarySorter = new ItinerarySorter();
 $sortedItinerary = $itinerarySorter->sort($unsortedItinerary);
 
 ```
