@@ -23,9 +23,9 @@ use ItinerarySorter\Model\Accommodation;
 use ItinerarySorter\Model\BoardingCardCollection;
 
 $boardingCards = [
-    new BoardingCard(3, 'Barcelona', 'Lisboa', new Accomodation('plane')),
+    new BoardingCard(3, 'Barcelona', 'Madrid', new Accomodation('plane')),
     new BoardingCard(1, 'Stockholm', 'Lisboa', new Accomodation('plane')),
-    new BoardingCard(2, 'Madrid', 'Barcelona', new Accomodation('plane')),
+    new BoardingCard(2, 'Lisboa', 'Barcelona', new Accomodation('plane')),
 ];
 
 $unsortedItinerary = new BoardingCardCollection();
